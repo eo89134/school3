@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ app.user.fname }}! </h1>
+
+    <p>Dit is de admin pagina</p>
+        <div class="example-wrapper">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Titel</th>
+                    <th scope="col">Beschrijving</th>
+                    <th scope="col">Datum</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for story in stories %}
+                    <tr>
+                        <td>{{ story.title }}</td>
+                        <td>{{ story.description }}</td>
+                        <td>{{ story.date |date("m/d/Y") }}</td>
+                        <td>
+                            <a class="nav-link active" aria-current="page" href="{{ path('app_delete', {id: story.id}) }}">
+                                <button type="hidden" class="btn btn-danger"> delete</button>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+</div>
+{% endblock %}

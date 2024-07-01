@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MemberController!{% endblock %}
+
+{% block body %}
+
+    <div class="example-wrapper">
+        {{ form_start(form) }}
+            {{ form_row(form.title) }}
+            {{ form_row(form.description) }}
+            {{ form_row(form.date) }}
+            <button type="submit"  class="btn btn-primary --bs-body-color">Toevoegen</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
